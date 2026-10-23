@@ -1,0 +1,2545 @@
+html
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0e0b16">
+  <title>Una cita de otro mundo · Yas & Ricardo 🎃</title>
+  
+  <style>
+    :root {
+      --bg: #0e0b16;
+      --surface: #1b1626;
+      --surf2: #241c30;
+      --line: #453450;
+      --text: #fff5ec;
+      --muted: #c4b6c6;
+      --pink: #ffa9c6;
+      --gold: #ffcd87;
+      --green: #a4e8c5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-text-size-adjust: 100%;
+      overflow-x: hidden;
+    }
+
+    button, select, input {
+      font: inherit;
+    }
+
+    button, select, summary, input[type=checkbox] {
+      touch-action: manipulation;
+    }
+
+    button, select, summary {
+      cursor: pointer;
+    }
+
+    a {
+      color: var(--gold);
+      text-underline-offset: 3px;
+    }
+
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .wrap {
+      width: min(1150px, calc(100% - 36px));
+      margin-inline: auto;
+    }
+
+    .background {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: radial-gradient(ellipse at 15% 0%, #67384e45, transparent 45%), 
+                  radial-gradient(ellipse at 90% 55%, #623b8240, transparent 55%), 
+                  #0e0b16;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 21px 0 14px;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      letter-spacing: .1em;
+      font-weight: 850;
+    }
+
+    .brand-symbol {
+      width: 35px;
+      height: 35px;
+      background: linear-gradient(125deg, #ffcd82, #fb90b4);
+      color: #271329;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+    }
+
+    .mini-date {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero {
+      border: 1px solid #654158;
+      border-radius: 25px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.4fr .6fr;
+      background: linear-gradient(120deg, #322039, #241930 53%, #50304a);
+    }
+
+    .hero-copy {
+      padding: 44px clamp(20px, 4vw, 54px);
+    }
+
+    .hero h1 {
+      font: 600 clamp(35px, 4.8vw, 62px)/1.05 Georgia, serif;
+      letter-spacing: -.04em;
+      margin: 14px 0 15px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero p {
+      color: #e5d0df;
+      max-width: 570px;
+      margin: 0 0 22px;
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 310px;
+      background: radial-gradient(circle at 50% 35%, #ffc57e38, transparent 60%);
+      overflow: hidden;
+    }
+
+    .moon {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 175px;
+      height: 175px;
+      border-radius: 100%;
+      background: radial-gradient(circle at 35% 25%, #ffe9ae, #faad73 70%, #bb6378);
+      box-shadow: 0 0 90px #fba46b55;
+    }
+
+    .silhouette {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 125px;
+      background: #130f22;
+      clip-path: polygon(0 60%, 12% 60%, 12% 42%, 20% 42%, 20% 70%, 32% 70%, 32% 20%, 41% 20%, 41% 65%, 52% 65%, 52% 36%, 61% 36%, 61% 73%, 72% 73%, 72% 45%, 83% 45%, 83% 66%, 94% 66%, 94% 32%, 100% 32%, 100% 100%, 0 100%);
+    }
+
+    .hero-emoji {
+      position: absolute;
+      left: 12%;
+      bottom: 43px;
+      font-size: 58px;
+      filter: drop-shadow(0 9px 9px #0008);
+    }
+
+    .hero-emoji.two {
+      font-size: 40px;
+      left: auto;
+      right: 9%;
+      bottom: 72px;
+    }
+
+    .btn {
+      min-height: 47px;
+      border: 0;
+      border-radius: 13px;
+      padding: 11px 16px;
+      background: #ffecd8;
+      color: #2a1930;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      gap: 8px;
+    }
+
+    .btn.secondary {
+      border: 1px solid #796172;
+      background: #ffffff0b;
+      color: var(--text);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 19px 0 28px;
+    }
+
+    .stat {
+      background: #21192d;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 17px;
+    }
+
+    .stat b {
+      font-size: 22px;
+      color: var(--gold);
+      display: block;
+    }
+
+    .stat small {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .section-title {
+      margin: 30px 0 13px;
+      font: 600 clamp(25px, 3vw, 34px)/1.2 Georgia, serif;
+    }
+
+    .section-lead {
+      color: var(--muted);
+      margin: 0 0 20px;
+    }
+
+    .controls {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 19px;
+      padding: 18px;
+      margin-bottom: 17px;
+    }
+
+    .budget-control {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .budget-control strong {
+      font-size: 25px;
+      color: var(--gold);
+    }
+
+    .controls input[type=range] {
+      width: 100%;
+      accent-color: #ffc17d;
+      margin: 12px 0 4px;
+      height: 28px;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .filterbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 15px 0;
+    }
+
+    .filter {
+      min-height: 43px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      padding: 10px 12px;
+      background: #30253b;
+      color: var(--text);
+      font-weight: 750;
+      font-size: 12px;
+    }
+
+    .filter.active {
+      background: #fbe8d5;
+      color: #21152c;
+    }
+
+    .sortbar {
+      display: flex;
+      gap: 9px;
+      align-items: center;
+      margin: 0 0 16px;
+    }
+
+    .sortbar label {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .sortbar select {
+      background: #31243e;
+      color: #fff;
+      border: 1px solid #695571;
+      border-radius: 12px;
+      min-height: 43px;
+      padding: 5px 12px;
+      max-width: 100%;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+
+    .plan {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 21px;
+      overflow: hidden;
+      min-width: 0;
+    }
+
+    .plan.favorite-on {
+      border-color: #ffc68e;
+      box-shadow: 0 0 0 1px #ffc68e55;
+    }
+
+    .plan-art {
+      height: 112px;
+      position: relative;
+      background: linear-gradient(116deg, var(--a), var(--b));
+      overflow: hidden;
+      padding: 18px;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .art-glow {
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: var(--c);
+      filter: blur(60px);
+      opacity: .53;
+      right: 0;
+      top: -70px;
+    }
+
+    .bigemoji {
+      font-size: 60px;
+      position: relative;
+      line-height: 1;
+      filter: drop-shadow(0 8px 8px #0007);
+    }
+
+    .art-tag {
+      position: absolute;
+      right: 12px;
+      bottom: 15px;
+      border: 1px solid #ffffff40;
+      background: #200f2888;
+      padding: 5px 9px;
+      border-radius: 99px;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .06em;
+    }
+
+    .plan-inner {
+      padding: 18px;
+    }
+
+    .date-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 5px;
+      font-weight: 750;
+      font-size: 10px;
+      color: #e8c4d4;
+    }
+
+    .date-line span:last-child {
+      color: var(--green);
+      white-space: nowrap;
+    }
+
+    .plan h3 {
+      font: 600 23px/1.12 Georgia, serif;
+      min-height: 52px;
+      letter-spacing: -.02em;
+      margin: 12px 0 8px;
+    }
+
+    .plan-desc {
+      color: var(--muted);
+      font-size: 12px;
+      min-height: 56px;
+      margin: 0 0 14px;
+    }
+
+    .price-panel {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 10px;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+
+    .price-panel small {
+      font-size: 11px;
+      color: var(--muted);
+      display: block;
+    }
+
+    .price-panel strong {
+      font-size: 25px;
+      color: var(--gold);
+      font-weight: 900;
+      display: block;
+      white-space: nowrap;
+    }
+
+    .budget-state {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--green);
+      max-width: 110px;
+      text-align: right;
+    }
+
+    .budget-state.over {
+      color: #ffba9d;
+    }
+
+    .more {
+      margin-top: 13px;
+      border-top: 1px solid #594664;
+    }
+
+    .more summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 14px 2px;
+      min-height: 52px;
+      color: #ffe6d7;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .more summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .more[open] .down-arrow {
+      transform: rotate(180deg);
+    }
+
+    .down-arrow {
+      font-size: 26px;
+      font-weight: 300;
+      line-height: 1;
+      transition: transform .2s;
+    }
+
+    .more-content {
+      padding: 0 1px 6px;
+    }
+
+    .more-content h4 {
+      margin: 18px 0 8px;
+      color: #fff2e8;
+      font-size: 14px;
+    }
+
+    .date-flag {
+      font-size: 12px;
+      padding: 9px;
+      border-radius: 9px;
+      background: #463044;
+      color: #ffe0cd;
+    }
+
+    .attraction {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      border-bottom: 1px solid #ffffff13;
+      padding: 11px 0;
+    }
+
+    .attraction b {
+      display: block;
+      font-size: 12px;
+    }
+
+    .attraction p {
+      margin: 3px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .attraction span {
+      color: #ffdda9;
+      font-size: 11px;
+      flex: 0 0 95px;
+      text-align: right;
+    }
+
+    .cost-hint {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: -2px;
+    }
+
+    .cost-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      padding: 11px 0;
+      border-bottom: 1px solid #ffffff1b;
+    }
+
+    .cost-title {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .cost-title strong {
+      display: block;
+      font-size: 12px;
+    }
+
+    .cost-title small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .edit-cost {
+      display: flex;
+      gap: 9px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .toggle input {
+      width: 20px;
+      height: 20px;
+      accent-color: #f6b772;
+      cursor: pointer;
+    }
+
+    .toggle span {
+      display: none;
+    }
+
+    .currency-input {
+      display: flex;
+      align-items: center;
+      border: 1px solid #654f6b;
+      background: #2b213a;
+      border-radius: 9px;
+      height: 43px;
+      padding: 0 7px;
+      gap: 4px;
+    }
+
+    .currency-input span {
+      color: var(--gold);
+    }
+
+    .currency-input input {
+      width: 64px;
+      background: transparent;
+      color: #fff;
+      border: 0;
+      outline: none;
+      text-align: right;
+      font-size: 13px;
+      -moz-appearance: textfield;
+    }
+
+    .currency-input input::-webkit-inner-spin-button,
+    .currency-input input::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .free {
+      color: var(--green);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .note {
+      background: #2e2636;
+      border-left: 3px solid #ffc18a;
+      padding: 12px;
+      font-size: 11px;
+      color: #d9cadb;
+      line-height: 1.5;
+      margin: 15px 0;
+    }
+
+    .sources {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 11px;
+      overflow-wrap: anywhere;
+    }
+
+    .sources b {
+      font-size: 12px;
+    }
+
+    .favorite {
+      margin-top: 12px;
+      border: 1px solid #735e78;
+      border-radius: 10px;
+      background: #31253b;
+      color: #ffcadf;
+      width: 100%;
+      height: 44px;
+      font-weight: 800;
+    }
+
+    .favorite[aria-pressed=true] {
+      background: #6a365a;
+      color: #fff;
+    }
+
+    .comparison, .votebox {
+      border: 1px solid var(--line);
+      border-radius: 19px;
+      background: #20182b;
+      padding: 22px;
+      margin-top: 22px;
+    }
+
+    .compared {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+      margin: 14px 0;
+    }
+
+    .compared-card {
+      border: 1px solid #644d67;
+      padding: 15px;
+      border-radius: 12px;
+    }
+
+    .compared-card b {
+      font-size: 15px;
+    }
+
+    .compared-card strong {
+      color: var(--gold);
+      display: block;
+      font-size: 23px;
+    }
+
+    .votebox .selects {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+      margin: 18px 0;
+    }
+
+    .votebox label {
+      display: block;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .votebox select {
+      width: 100%;
+      margin-top: 7px;
+      border: 1px solid #705879;
+      border-radius: 11px;
+      background: #30243c;
+      color: #fff;
+      min-height: 48px;
+      padding: 10px;
+    }
+
+    .result {
+      border-radius: 12px;
+      background: #3e3045;
+      padding: 14px;
+      font-weight: 750;
+      color: #ffe6d7;
+      margin: 12px 0;
+    }
+
+    .foot-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .footer {
+      color: var(--muted);
+      text-align: center;
+      font-size: 12px;
+      padding: 40px 0 30px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff1da;
+      color: #261629;
+      padding: 11px 17px;
+      border-radius: 10px;
+      z-index: 50;
+      font-size: 13px;
+      box-shadow: 0 12px 33px #0006;
+    }
+
+    .empty {
+      background: #271e32;
+      border-radius: 12px;
+      padding: 20px;
+      color: #ffe3c3;
+    }
+
+    .explain {
+      margin: 19px 0;
+      color: #cfc1d1;
+      font-size: 12px;
+    }
+
+    .noscript {
+      background: #4a3045;
+      border: 1px solid #b28092;
+      padding: 13px;
+      border-radius: 12px;
+      font-size: 12px;
+      color: #ffebdd;
+      margin: 10px 0;
+    }
+
+    @media(max-width:920px) {
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .hero {
+        grid-template-columns: 1fr .6fr;
+      }
+      .hero-art {
+        min-height: 295px;
+      }
+    }
+
+    @media(max-width:620px) {
+      .wrap {
+        width: calc(100% - 26px);
+      }
+      .header {
+        padding: 14px 0 12px;
+      }
+      .mini-date {
+        font-size: 10px;
+        text-align: right;
+      }
+      .hero {
+        grid-template-columns: 1fr;
+        border-radius: 21px;
+      }
+      .hero-copy {
+        padding: 28px 21px 15px;
+      }
+      .hero h1 {
+        font-size: 41px;
+      }
+      .hero p {
+        font-size: 13px;
+      }
+      .hero-art {
+        min-height: 118px;
+      }
+      .moon {
+        width: 98px;
+        height: 98px;
+        top: 10px;
+      }
+      .silhouette {
+        height: 90px;
+      }
+      .hero-emoji {
+        font-size: 45px;
+        bottom: 10px;
+        left: 25%;
+      }
+      .hero-emoji.two {
+        font-size: 30px;
+        bottom: 25px;
+        right: 20%;
+      }
+      .stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 7px;
+        margin: 13px 0 24px;
+      }
+      .stat {
+        padding: 12px 7px;
+        border-radius: 11px;
+      }
+      .stat b {
+        font-size: 18px;
+      }
+      .stat small {
+        font-size: 10px;
+        line-height: 1.3;
+        display: block;
+      }
+      .section-title {
+        font-size: 27px;
+        margin-top: 27px;
+      }
+      .cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .plan h3 {
+        font-size: 24px;
+        min-height: auto;
+      }
+      .plan-desc {
+        min-height: auto;
+      }
+      .plan-art {
+        height: 105px;
+      }
+      .plan-inner {
+        padding: 17px;
+      }
+      .price-panel strong {
+        font-size: 29px;
+      }
+      .more summary {
+        font-size: 14px;
+        min-height: 56px;
+      }
+      .compared, .votebox .selects {
+        grid-template-columns: 1fr;
+      }
+      .comparison, .votebox {
+        padding: 17px;
+      }
+      .budget-state {
+        max-width: 140px;
+      }
+      .controls {
+        padding: 15px;
+      }
+      .filter {
+        flex: 1 0 auto;
+      }
+      .hero-actions .btn {
+        flex: 1;
+      }
+      .attraction span {
+        flex-basis: 95px;
+      }
+    }
+
+    .help {
+      border: 1px solid #654f6b;
+      background: #2c2038;
+      border-radius: 13px;
+      padding: 10px 15px;
+      margin: 9px 0 18px;
+    }
+
+    .help summary {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      color: #ffe0c5;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .help p {
+      font-size: 12px;
+      color: #d7c5d8;
+      margin: 6px 0 9px;
+    }
+
+    @media print {
+      body {
+        background: white;
+        color: black;
+      }
+      .background, .header, .hero-art, .controls, .filterbar, .sortbar, .foot-actions, .favorite, .footer {
+        display: none !important;
+      }
+      .plan {
+        break-inside: avoid;
+        background: white;
+        color: black;
+        border: 1px solid #aaa;
+      }
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+      .plan h3, .more summary, .more-content h4, .attraction b {
+        color: black;
+      }
+      .plan-desc, .cost-hint, .cost-title small, .attraction p {
+        color: #444;
+      }
+      .more:not([open]) .more-content {
+        display: block;
+      }
+      .hero {
+        display: block;
+        border: 0;
+        background: white;
+        box-shadow: none;
+      }
+      .hero-copy {
+        padding: 10px 0;
+      }
+      .hero h1 {
+        color: black;
+      }
+      .hero p {
+        color: #333;
+      }
+      .price-panel strong {
+        color: #64304e;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background"></div>
+  <div class="wrap">
+    
+    <!-- HEADER -->
+    <header class="header">
+      <div class="brand">
+        <span class="brand-symbol">♡</span> YAS × RICARDO
+      </div>
+      <span class="mini-date">SÁBADO · 31 OCTUBRE 2026</span>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">🎃 Día de Muertos · Nuestro especial</span>
+        <h1>Una cita <em>de otro mundo.</em></h1>
+        <p>Siete experiencias de terror, catrinas y leyendas para elegir juntos. Con precios transparentes, detalles de cada atracción y nuestro presupuesto real.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#opciones">Ver planes ↓</a>
+          <a class="btn secondary" href="#votos">Votar ♡</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="moon"></div>
+        <div class="silhouette"></div>
+        <span class="hero-emoji">💀</span>
+        <span class="hero-emoji two">🌼</span>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+      <div class="stat">
+        <b>7 planes</b>
+        <small>Temáticos del 31</small>
+      </div>
+      <div class="stat">
+        <b>$0</b>
+        <small>Entrada Six Flags con sus pases*</small>
+      </div>
+      <div class="stat">
+        <b>2 ♡</b>
+        <small>Una cita para recordar</small>
+      </div>
+    </section>
+
+    <noscript>
+      <div class="noscript">
+        Las tarjetas y sus atracciones sí se pueden consultar sin JavaScript. Para cambiar precios, votar y calcular totales, abre el archivo en Safari o Chrome como página web, no desde un visor de documentos.
+      </div>
+    </noscript>
+
+    <div id="noJS" class="noscript">
+      Si los filtros, votos y cálculos no responden, probablemente tu visor no está ejecutando JavaScript. Abre el HTML en un navegador; mientras tanto, toca “Ver atracciones” en cada tarjeta.
+    </div>
+
+    <details class="help">
+      <summary>📱 ¿No responden los botones en tu iPhone? Toca aquí</summary>
+      <p>Algunos visores de documentos muestran HTML sin ejecutar las funciones interactivas. Descarga el archivo y ábrelo como página web en Safari o Chrome. Si lo ves desde una vista previa que bloquea JavaScript, aún puedes consultar las atracciones expandiendo cada tarjeta.</p>
+    </details>
+
+    <!-- PLANES / OPCIONES -->
+    <section id="opciones">
+      <span class="eyebrow">Elijamos nuestra aventura</span>
+      <h2 class="section-title">¿Dónde nos asustamos, amor?</h2>
+      <p class="section-lead">Todas estas opciones tienen temática de Halloween o Día de Muertos. Los precios iniciales incluyen a dos personas; transporte y comida son estimaciones que pueden modificar.</p>
+
+      <!-- CONTROLES -->
+      <div class="controls js-only" hidden>
+        <div class="budget-control">
+          <div>
+            <b>Tope para la cita</b>
+            <div class="hint">Entre los dos, incluyendo traslados</div>
+          </div>
+          <strong id="limitValue">$1,500</strong>
+        </div>
+        <input id="limit" type="range" min="500" max="4000" step="100" value="1500" aria-label="Presupuesto máximo de la cita">
+        <div class="hint">💡 Mueve el control para ver qué planes quedan dentro de nuestro presupuesto.</div>
+        
+        <div class="filterbar">
+          <button class="filter active" data-filter="todos" aria-pressed="true">Todas (7)</button>
+          <button class="filter" data-filter="terror">👻 Terror</button>
+          <button class="filter" data-filter="tradicion">🌼 Día de Muertos</button>
+          <button class="filter" data-filter="carretera">🚗 Escapada</button>
+          <button class="filter" data-filter="presupuesto">💸 Dentro del tope</button>
+        </div>
+        
+        <div class="sortbar">
+          <label for="sort">Ordenar:</label>
+          <select id="sort">
+            <option value="recomendado">Favoritas para el 31</option>
+            <option value="precio">Menor costo</option>
+            <option value="nombre">Nombre</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- CARDS -->
+      <div class="cards" id="cards">
+        
+        <!-- PLAN 1: SIX FLAGS -->
+        <article class="plan" id="plan-six" data-id="six" data-cats="terror" data-rank="1" data-name="Six Flags · Festival del Terror">
+          <div class="plan-art" style="--a:#28183f;--b:#613455;--c:#da7b91">
+            <div class="art-glow"></div>
+            <span class="bigemoji">🎢</span>
+            <span class="art-tag">TERROR EN GRANDE</span>
+          </div>
+          <div class="plan-inner">
+            <div class="date-line">
+              <span>📍 Tlalpan, CDMX</span>
+              <span>31 OCT ✓</span>
+            </div>
+            <h3>Six Flags · Festival del Terror</h3>
+            <p class="plan-desc">Ya tenemos pase anual: aprovechen shows, zonas de espanto y montañas rusas sin pagar entrada otra vez.</p>
+            <div class="price-panel">
+              <div>
+                <small>Total para 2 personas</small>
+                <strong data-total="six">$930</strong>
+              </div>
+              <span class="budget-state" data-status="six">Dentro del presupuesto</span>
+            </div>
+            <details class="more" id="details-six">
+              <summary>
+                <span>👻 Ver atracciones, horarios y gastos</span>
+                <span class="down-arrow">⌄</span>
+              </summary>
+              <div class="more-content">
+                <p class="date-flag">🗓️ 3 sep – 16 nov · incluye 31 oct</p>
+                <h4>Atracciones de temporada</h4>
+                <div class="attraction">
+                  <div>
+                    <b>Jason: Blood Reign</b>
+                    <p>Nueva atracción de terror inspirada en Friday the 13th.</p>
+                  </div>
+                  <span>Pase extra</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>The Strangers: No Escape</b>
+                    <p>Recorrido largo de persecución y sustos.</p>
+                  </div>
+                  <span>Pase extra</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>The Conjuring Universe</b>
+                    <p>Annabelle, la Monja y objetos malditos.</p>
+                  </div>
+                  <span>Pase extra</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Widows · Cinema Slasher · Rancho Masacre</b>
+                    <p>Tres de las ocho experiencias del pase especial.</p>
+                  </div>
+                  <span>Pase extra</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Killer Clowns · Criptas</b>
+                    <p>Completan las ocho atracciones del pase.</p>
+                  </div>
+                  <span>Pase extra</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Castillo de Drácula, Twisted Clowns, Ghost Town</b>
+                    <p>Tres zonas de espanto en el recorrido del parque.</p>
+                  </div>
+                  <span>Pase anual</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Cortejo Siniestro y Cirque Du Grotesque</b>
+                    <p>Desfile temático y espectáculo en vivo.</p>
+                  </div>
+                  <span>Pase anual</span>
+                </div>
+
+                <h4 class="cost-header">Presupuesto editable</h4>
+                <p class="cost-hint">Marca las actividades que harán. Cambia importes de transporte, comida y extras; los totales se actualizan cuando se abre en un navegador.</p>
+                
+                <div class="cost-list">
+                  <div class="cost-row fixed-free">
+                    <div class="cost-title">
+                      <strong>Entrada para ambos con pases anuales</strong>
+                      <small>Confirmar pases vigentes y condiciones para el 31</small>
+                    </div>
+                    <strong class="free">Incluido / $0</strong>
+                  </div>
+                  <div class="cost-row" data-cost-row="six" data-cost-index="1" data-qty="1">
+                    <div class="cost-title">
+                      <strong>Transporte ida y vuelta</strong>
+                      <small>Estimación, ajustar a su ruta</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="six|1" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="480" aria-label="Costo unitario: Transporte ida y vuelta" data-price="six|1">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="six" data-cost-index="2" data-qty="1">
+                    <div class="cost-title">
+                      <strong>Comida y bebidas para dos</strong>
+                      <small>Estimación, considerar descuentos de pase</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="six|2" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="450" aria-label="Costo unitario: Comida y bebidas para dos" data-price="six|2">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="six" data-cost-index="3" data-qty="2">
+                    <div class="cost-title">
+                      <strong>Pase de 8 casas de terror</strong>
+                      <small>Desde $550 por persona; el 31 puede costar más · x2</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="six|3">
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="550" aria-label="Costo unitario: Pase de 8 casas de terror" data-price="six|3">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="note">Entrada al festival incluida con los pases anuales; las ocho casas NO. El pase especial es desde $550 por persona, no tarifa garantizada del 31. Revisen horarios, bloqueos del pase y políticas de disfraces.</div>
+                <div class="sources">
+                  <b>Fuentes y boletos</b>
+                  <a href="https://www.sixflags.com/mexico/events/festival-del-terror" target="_blank" rel="noopener">↗ Six Flags · Festival del Terror</a>
+                  <a href="https://www.sixflags.com/mexico/terminos-y-condiciones-pases-anuales" target="_blank" rel="noopener">↗ Six Flags · Condiciones de pases</a>
+                </div>
+              </div>
+            </details>
+            <button type="button" class="favorite js-only" hidden data-favorite="six" aria-pressed="false">♡ Agregar a finalistas</button>
+          </div>
+        </article>
+
+        <!-- PLAN 2: AZTLÁN -->
+        <article class="plan" id="plan-aztlan" data-id="aztlan" data-cats="terror tradicion" data-rank="2" data-name="Aztlán · Festival de las Calaveras">
+          <div class="plan-art" style="--a:#302044;--b:#8d397a;--c:#f0a26e">
+            <div class="art-glow"></div>
+            <span class="bigemoji">🎡</span>
+            <span class="art-tag">LEYENDAS Y FERIA</span>
+          </div>
+          <div class="plan-inner">
+            <div class="date-line">
+              <span>📍 Bosque de Chapultepec II, CDMX</span>
+              <span>31 OCT ✓</span>
+            </div>
+            <h3>Aztlán · Festival de las Calaveras</h3>
+            <p class="plan-desc">Casa de sustos, VR, catrinas iluminadas, altar inmersivo y juegos en Chapultepec.</p>
+            <div class="price-panel">
+              <div>
+                <small>Total para 2 personas</small>
+                <strong data-total="aztlan">$1,100</strong>
+              </div>
+              <span class="budget-state" data-status="aztlan">Dentro del presupuesto</span>
+            </div>
+            <details class="more" id="details-aztlan">
+              <summary>
+                <span>👻 Ver atracciones, horarios y gastos</span>
+                <span class="down-arrow">⌄</span>
+              </summary>
+              <div class="more-content">
+                <p class="date-flag">🗓️ 10 oct – 8 nov · incluye 31 oct</p>
+                <h4>Atracciones de temporada</h4>
+                <div class="attraction">
+                  <div>
+                    <b>Hacienda Maldita</b>
+                    <p>Leyendas mexicanas con La Llorona, nahuales y pasillos oscuros.</p>
+                  </div>
+                  <span>$110 c/u</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>La Fiesta Eterna</b>
+                    <p>Experiencia inmersiva con catrinas, alebrijes y cempasúchil.</p>
+                  </div>
+                  <span>$110 c/u</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Siniestro VR</b>
+                    <p>Terror virtual inspirado en La Planchada.</p>
+                  </div>
+                  <span>$110 c/u</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Espíritus de Luz y gran altar inmersivo</b>
+                    <p>Catrinas iluminadas y proyecciones temáticas.</p>
+                  </div>
+                  <span>Revisar acceso</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Rueda Aztlán 360</b>
+                    <p>Panorámica desde lo alto de Chapultepec.</p>
+                  </div>
+                  <span>Precio por validar</span>
+                </div>
+
+                <h4 class="cost-header">Presupuesto editable</h4>
+                <p class="cost-hint">Marca las actividades que harán. Cambia importes de transporte, comida y extras; los totales se actualizan cuando se abre en un navegador.</p>
+                
+                <div class="cost-list">
+                  <div class="cost-row fixed-free">
+                    <div class="cost-title">
+                      <strong>Entrada general al parque</strong>
+                      <small>Acceso al parque gratuito</small>
+                    </div>
+                    <strong class="free">Incluido / $0</strong>
+                  </div>
+                  <div class="cost-row" data-cost-row="aztlan" data-cost-index="1" data-qty="1">
+                    <div class="cost-title">
+                      <strong>Pasajes ida y vuelta</strong>
+                      <small>Dato del mock-up; editable</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="aztlan|1" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="240" aria-label="Costo unitario: Pasajes ida y vuelta" data-price="aztlan|1">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="aztlan" data-cost-index="2" data-qty="2">
+                    <div class="cost-title">
+                      <strong>Hacienda Maldita</strong>
+                      <small>$110 por persona · x2</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="aztlan|2" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="110" aria-label="Costo unitario: Hacienda Maldita" data-price="aztlan|2">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="aztlan" data-cost-index="3" data-qty="2">
+                    <div class="cost-title">
+                      <strong>La Fiesta Eterna</strong>
+                      <small>$110 por persona · x2</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="aztlan|3" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="110" aria-label="Costo unitario: La Fiesta Eterna" data-price="aztlan|3">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="aztlan" data-cost-index="4" data-qty="2">
+                    <div class="cost-title">
+                      <strong>Siniestro VR</strong>
+                      <small>Opcional, $110 por persona · x2</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="aztlan|4">
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="110" aria-label="Costo unitario: Siniestro VR" data-price="aztlan|4">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="aztlan" data-cost-index="5" data-qty="1">
+                    <div class="cost-title">
+                      <strong>Comidas y snacks</strong>
+                      <small>Estimación, editable</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="aztlan|5" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="420" aria-label="Costo unitario: Comidas y snacks" data-price="aztlan|5">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="note">El evento está anunciado para el 31. Los talleres de stencil/grabado publicados tienen otros días: no los incluimos como actividades del sábado 31. Algunas atracciones se pueden incluir en paquetes; comparar antes de recargar.</div>
+                <div class="sources">
+                  <b>Fuentes y boletos</b>
+                  <a href="https://www.directoalpaladar.com.mx/viajes-y-estilo-de-vida/festival-calaveras-regresa-a-aztlan-fechas-actividades-experiencias-terror-chapultepec-al-8-noviembre" target="_blank" rel="noopener">↗ Aztlán · Festival de las Calaveras</a>
+                </div>
+              </div>
+            </details>
+            <button type="button" class="favorite js-only" hidden data-favorite="aztlan" aria-pressed="false">♡ Agregar a finalistas</button>
+          </div>
+        </article>
+
+        <!-- PLAN 3: EX HACIENDA CHAUTLA -->
+        <article class="plan" id="plan-chautla" data-id="chautla" data-cats="terror tradicion carretera" data-rank="3" data-name="Catrineras · Ex Hacienda Chautla">
+          <div class="plan-art" style="--a:#213b43;--b:#2b6574;--c:#b58b6f">
+            <div class="art-glow"></div>
+            <span class="bigemoji">🏰</span>
+            <span class="art-tag">CASTILLO ENCANTADO</span>
+          </div>
+          <div class="plan-inner">
+            <div class="date-line">
+              <span>📍 San Lucas el Grande, Puebla</span>
+              <span>31 OCT ✓</span>
+            </div>
+            <h3>Catrineras · Ex Hacienda Chautla</h3>
+            <p class="plan-desc">La ex hacienda original de tu propuesta, ahora con su propio festival de Día de Muertos y terror.</p>
+            <div class="price-panel">
+              <div>
+                <small>Total para 2 personas</small>
+                <strong data-total="chautla">$1,591</strong>
+              </div>
+              <span class="budget-state" data-status="chautla">Por arriba del presupuesto</span>
+            </div>
+            <details class="more" id="details-chautla">
+              <summary>
+                <span>👻 Ver atracciones, horarios y gastos</span>
+                <span class="down-arrow">⌄</span>
+              </summary>
+              <div class="more-content">
+                <p class="date-flag">🗓️ 9 oct – 2 nov · sáb 13:00–23:00</p>
+                <h4>Atracciones de temporada</h4>
+                <div class="attraction">
+                  <div>
+                    <b>Tres casas del terror</b>
+                    <p>Recorridos temáticos dentro del festival.</p>
+                  </div>
+                  <span>~$80 c/u por paquete</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Isla de la Llorona</b>
+                    <p>Relatos y ambientación junto al lago.</p>
+                  </div>
+                  <span>Consultar</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Paseo de las Almas</b>
+                    <p>Recorrido de Día de Muertos, ofrendas y leyendas.</p>
+                  </div>
+                  <span>Con la entrada / confirmar</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Trajineras en el lago</b>
+                    <p>Paseo sobre el agua con vistas del castillo.</p>
+                  </div>
+                  <span>~$50 c/u</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Iluminación de castillo y pabellón gastronómico</b>
+                    <p>Fotos nocturnas, comida y artesanías.</p>
+                  </div>
+                  <span>Consumo aparte</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Zona de calabazas</b>
+                    <p>Experiencia adicional temática.</p>
+                  </div>
+                  <span>~$50 c/u</span>
+                </div>
+
+                <h4 class="cost-header">Presupuesto editable</h4>
+                <p class="cost-hint">Marca las actividades que harán. Cambia importes de transporte, comida y extras; los totales se actualizan cuando se abre en un navegador.</p>
+                
+                <div class="cost-list">
+                  <div class="cost-row" data-cost-row="chautla" data-cost-index="0" data-qty="2">
+                    <div class="cost-title">
+                      <strong>Entrada general de adultos</strong>
+                      <small>Tarifa oficial del festival · x2</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="chautla|0" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="50" aria-label="Costo unitario: Entrada general de adultos" data-price="chautla|0">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="chautla" data-cost-index="1" data-qty="1">
+                    <div class="cost-title">
+                      <strong>Gasolina ida y vuelta</strong>
+                      <small>Estimación de tu mock-up desde Amecameca</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="chautla|1" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="400" aria-label="Costo unitario: Gasolina ida y vuelta" data-price="chautla|1">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="chautla" data-cost-index="2" data-qty="1">
+                    <div class="cost-title">
+                      <strong>Casetas ida y vuelta</strong>
+                      <small>Estimación del mock-up</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="chautla|2" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="360" aria-label="Costo unitario: Casetas ida y vuelta" data-price="chautla|2">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="chautla" data-cost-index="3" data-qty="1">
+                    <div class="cost-title">
+                      <strong>Estacionamiento principal</strong>
+                      <small>Precio reportado, revisar en sitio</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="chautla|3" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="21" aria-label="Costo unitario: Estacionamiento principal" data-price="chautla|3">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="chautla" data-cost-index="4" data-qty="2">
+                    <div class="cost-title">
+                      <strong>Tres casas de terror</strong>
+                      <small>Precio reportado por persona para las tres · x2</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="chautla|4" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="80" aria-label="Costo unitario: Tres casas de terror" data-price="chautla|4">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="chautla" data-cost-index="5" data-qty="2">
+                    <div class="cost-title">
+                      <strong>Trajinera en el lago</strong>
+                      <small>Precio reportado por persona · x2</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="chautla|5" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="50" aria-label="Costo unitario: Trajinera en el lago" data-price="chautla|5">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="chautla" data-cost-index="6" data-qty="2">
+                    <div class="cost-title">
+                      <strong>Zona de calabazas</strong>
+                      <small>Extra opcional · x2</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="chautla|6">
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="50" aria-label="Costo unitario: Zona de calabazas" data-price="chautla|6">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="chautla" data-cost-index="7" data-qty="1">
+                    <div class="cost-title">
+                      <strong>Comida y antojos</strong>
+                      <small>Estimación, editable</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="chautla|7" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="450" aria-label="Costo unitario: Comida y antojos" data-price="chautla|7">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="note">El evento nocturno 2026 SÍ está anunciado para el sábado 31. El precio de entrada oficial es $50 por adulto. Las tarifas de casas, trajineras y estacionamiento provienen de reportes locales y deben confirmarse con la organización.</div>
+                <div class="sources">
+                  <b>Fuentes y boletos</b>
+                  <a href="https://www.puebla.gob.mx/index.php/noticias/item/25418-promueve-gobierno-del-estado-tradiciones-mexicanas-con-catrineras-chautla-2026" target="_blank" rel="noopener">↗ Chautla · Gobierno de Puebla</a>
+                  <a href="https://www.ambasmanos.mx/puebla/inicia-el-festival-catrineras-2026-en-la-ex-hacienda-de-chautla/" target="_blank" rel="noopener">↗ Chautla · Costos de extras</a>
+                </div>
+              </div>
+            </details>
+            <button type="button" class="favorite js-only" hidden data-favorite="chautla" aria-pressed="false">♡ Agregar a finalistas</button>
+          </div>
+        </article>
+
+        <!-- PLAN 4: LA LLORONA -->
+        <article class="plan" id="plan-llorona" data-id="llorona" data-cats="terror tradicion" data-rank="4" data-name="La Llorona · Xochimilco">
+          <div class="plan-art" style="--a:#173f46;--b:#277275;--c:#7ac5b7">
+            <div class="art-glow"></div>
+            <span class="bigemoji">🌕</span>
+            <span class="art-tag">NOCHE MÍSTICA</span>
+          </div>
+          <div class="plan-inner">
+            <div class="date-line">
+              <span>📍 Embarcadero Cuemanco, CDMX</span>
+              <span>31 OCT ✓</span>
+            </div>
+            <h3>La Llorona · Xochimilco</h3>
+            <p class="plan-desc">Travesía en trajinera y montaje teatral con actores, música y leyendas sobre el agua.</p>
+            <div class="price-panel">
+              <div>
+                <small>Total para 2 personas</small>
+                <strong data-total="llorona">$2,090</strong>
+              </div>
+              <span class="budget-state" data-status="llorona">Por arriba del presupuesto</span>
+            </div>
+            <details class="more" id="details-llorona">
+              <summary>
+                <span>👻 Ver atracciones, horarios y gastos</span>
+                <span class="down-arrow">⌄</span>
+              </summary>
+              <div class="more-content">
+                <p class="date-flag">🗓️ 31 oct · función especial de medianoche</p>
+                <h4>Atracciones de temporada</h4>
+                <div class="attraction">
+                  <div>
+                    <b>Trajinera nocturna</b>
+                    <p>El paseo viene incluido en el boleto del espectáculo.</p>
+                  </div>
+                  <span>Incluido</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>La Llorona en vivo</b>
+                    <p>Obra sobre el agua con alrededor de 50 artistas, danzas y música.</p>
+                  </div>
+                  <span>$560 c/u + cargos</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Función especial de medianoche</b>
+                    <p>La temporada anuncia función extra el sábado 31.</p>
+                  </div>
+                  <span>Cupo sujeto a disponibilidad</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Escenografía y rituales</b>
+                    <p>Luces, pirámide monumental y leyenda mexicana.</p>
+                  </div>
+                  <span>Incluido</span>
+                </div>
+
+                <h4 class="cost-header">Presupuesto editable</h4>
+                <p class="cost-hint">Marca las actividades que harán. Cambia importes de transporte, comida y extras; los totales se actualizan cuando se abre en un navegador.</p>
+                
+                <div class="cost-list">
+                  <div class="cost-row" data-cost-row="llorona" data-cost-index="0" data-qty="2">
+                    <div class="cost-title">
+                      <strong>Boleto oficial para dos</strong>
+                      <small>$560 por persona, más servicio · x2</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="llorona|0" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="560" aria-label="Costo unitario: Boleto oficial para dos" data-price="llorona|0">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="llorona" data-cost-index="1" data-qty="1">
+                    <div class="cost-title">
+                      <strong>Cargos por servicio estimados</strong>
+                      <small>ESTIMACIÓN; confirmar al pagar</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="llorona|1" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="150" aria-label="Costo unitario: Cargos por servicio estimados" data-price="llorona|1">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="llorona" data-cost-index="2" data-qty="1">
+                    <div class="cost-title">
+                      <strong>Transporte ida y vuelta</strong>
+                      <small>Estimación, editable</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="llorona|2" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="440" aria-label="Costo unitario: Transporte ida y vuelta" data-price="llorona|2">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="llorona" data-cost-index="3" data-qty="1">
+                    <div class="cost-title">
+                      <strong>Cena / antojos</strong>
+                      <small>Estimación, editable</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="llorona|3" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="380" aria-label="Costo unitario: Cena / antojos" data-price="llorona|3">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="note">Sitio oficial anuncia funciones sábados a las 18:00 y 21:00, más medianoche el 31. La promoción 2x1 anunciada NO cubre el 31. Llegar 30 minutos antes, llevar chamarra y repelente.</div>
+                <div class="sources">
+                  <b>Fuentes y boletos</b>
+                  <a href="https://www.lalloronaencuemanco.com/" target="_blank" rel="noopener">↗ La Llorona · sitio y boletos</a>
+                </div>
+              </div>
+            </details>
+            <button type="button" class="favorite js-only" hidden data-favorite="llorona" aria-pressed="false">♡ Agregar a finalistas</button>
+          </div>
+        </article>
+
+        <!-- PLAN 5: ATLIXCO -->
+        <article class="plan" id="plan-atlixco" data-id="atlixco" data-cats="tradicion carretera" data-rank="5" data-name="Atlixco · Valle de Catrinas">
+          <div class="plan-art" style="--a:#483141;--b:#a36377;--c:#f0b16f">
+            <div class="art-glow"></div>
+            <span class="bigemoji">🌼</span>
+            <span class="art-tag">RUTA DE CATRINAS</span>
+          </div>
+          <div class="plan-inner">
+            <div class="date-line">
+              <span>📍 Centro de Atlixco, Puebla</span>
+              <span>31 OCT ✓</span>
+            </div>
+            <h3>Atlixco · Valle de Catrinas</h3>
+            <p class="plan-desc">Catrinas monumentales de dioses prehispánicos; opcionalmente entrar al espectáculo Catrinia.</p>
+            <div class="price-panel">
+              <div>
+                <small>Total para 2 personas</small>
+                <strong data-total="atlixco">$1,500</strong>
+              </div>
+              <span class="budget-state" data-status="atlixco">Dentro del presupuesto</span>
+            </div>
+            <details class="more" id="details-atlixco">
+              <summary>
+                <span>👻 Ver atracciones, horarios y gastos</span>
+                <span class="down-arrow">⌄</span>
+              </summary>
+              <div class="more-content">
+                <p class="date-flag">🗓️ Valle 2 oct – 9 nov · Catrinia al 1 nov</p>
+                <h4>Atracciones de temporada</h4>
+                <div class="attraction">
+                  <div>
+                    <b>Valle de Catrinas</b>
+                    <p>Esculturas monumentales por el centro; temática dioses prehispánicos.</p>
+                  </div>
+                  <span>Gratis en vía pública</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Tezcatlipoca y Tzinacantecuhtli</b>
+                    <p>Piezas artísticas e imaginario del inframundo.</p>
+                  </div>
+                  <span>Ruta pública</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Catrinia clásico (opcional)</b>
+                    <p>Desfile, panteón temático y videomapping.</p>
+                  </div>
+                  <span>$400 c/u +12% cargo</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Catrinia preferente / VIP</b>
+                    <p>Otros accesos a Túnel Mictlán, Lago de Almas y Sendero Ancestral.</p>
+                  </div>
+                  <span>~$650 / $900 c/u + cargos</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Mercado de Sabores del Más Acá</b>
+                    <p>Pan de muerto, chocolate y gastronomía local.</p>
+                  </div>
+                  <span>Consumo aparte</span>
+                </div>
+
+                <h4 class="cost-header">Presupuesto editable</h4>
+                <p class="cost-hint">Marca las actividades que harán. Cambia importes de transporte, comida y extras; los totales se actualizan cuando se abre en un navegador.</p>
+                
+                <div class="cost-list">
+                  <div class="cost-row fixed-free">
+                    <div class="cost-title">
+                      <strong>Recorrido Valle de Catrinas</strong>
+                      <small>Ruta pública gratuita</small>
+                    </div>
+                    <strong class="free">Incluido / $0</strong>
+                  </div>
+                  <div class="cost-row" data-cost-row="atlixco" data-cost-index="1" data-qty="1">
+                    <div class="cost-title">
+                      <strong>Gasolina ida y vuelta</strong>
+                      <small>Estimación desde Amecameca, editable</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="atlixco|1" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="700" aria-label="Costo unitario: Gasolina ida y vuelta" data-price="atlixco|1">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="atlixco" data-cost-index="2" data-qty="1">
+                    <div class="cost-title">
+                      <strong>Casetas ida y vuelta</strong>
+                      <small>Estimación, editable</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="atlixco|2" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="380" aria-label="Costo unitario: Casetas ida y vuelta" data-price="atlixco|2">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="atlixco" data-cost-index="3" data-qty="1">
+                    <div class="cost-title">
+                      <strong>Comida / pan de muerto</strong>
+                      <small>Estimación, editable</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="atlixco|3" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="420" aria-label="Costo unitario: Comida / pan de muerto" data-price="atlixco|3">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="atlixco" data-cost-index="4" data-qty="2">
+                    <div class="cost-title">
+                      <strong>Catrinia clásico + servicio (12%)</strong>
+                      <small>Opcional: $400 + 12% aprox por persona · x2</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="atlixco|4">
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="448" aria-label="Costo unitario: Catrinia clásico + servicio (12%)" data-price="atlixco|4">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="note">La ruta pública es gratuita. Catrinia es un EVENTO DE PAGO distinto; el boleto Clásico se anuncia en $400 más cargo de servicio del 12%. Confirmar que existan lugares para el sábado 31 antes de viajar.</div>
+                <div class="sources">
+                  <b>Fuentes y boletos</b>
+                  <a href="https://www.atlixco.gob.mx/Pages/Noticias/Noticia?idnoti=4496" target="_blank" rel="noopener">↗ Atlixco · programa oficial</a>
+                  <a href="https://catrinia.com/faq/" target="_blank" rel="noopener">↗ Catrinia · paquetes y horarios</a>
+                </div>
+              </div>
+            </details>
+            <button type="button" class="favorite js-only" hidden data-favorite="atlixco" aria-pressed="false">♡ Agregar a finalistas</button>
+          </div>
+        </article>
+
+        <!-- PLAN 6: GRAN DESFILE + MEGAOFRENDA -->
+        <article class="plan" id="plan-desfile" data-id="desfile" data-cats="tradicion" data-rank="6" data-name="Gran Desfile + Megaofrenda">
+          <div class="plan-art" style="--a:#41304d;--b:#934961;--c:#e4a36c">
+            <div class="art-glow"></div>
+            <span class="bigemoji">💀</span>
+            <span class="art-tag">MÉXICO DE MUERTOS</span>
+          </div>
+          <div class="plan-inner">
+            <div class="date-line">
+              <span>📍 Reforma → Centro Histórico, CDMX</span>
+              <span>31 OCT ✓</span>
+            </div>
+            <h3>Gran Desfile + Megaofrenda</h3>
+            <p class="plan-desc">Carros alegóricos, catrinas y música, seguido del Zócalo iluminado y su ofrenda monumental.</p>
+            <div class="price-panel">
+              <div>
+                <small>Total para 2 personas</small>
+                <strong data-total="desfile">$690</strong>
+              </div>
+              <span class="budget-state" data-status="desfile">Dentro del presupuesto</span>
+            </div>
+            <details class="more" id="details-desfile">
+              <summary>
+                <span>👻 Ver atracciones, horarios y gastos</span>
+                <span class="down-arrow">⌄</span>
+              </summary>
+              <div class="more-content">
+                <p class="date-flag">🗓️ Sáb 31 oct · desfile 14:00</p>
+                <h4>Atracciones de temporada</h4>
+                <div class="attraction">
+                  <div>
+                    <b>Gran Desfile de Día de Muertos</b>
+                    <p>Catrinas, mojigangas, danzantes y carros alegóricos.</p>
+                  </div>
+                  <span>Gratis</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Ofrenda Monumental en Zócalo</b>
+                    <p>Homenaje a José Guadalupe Posada, cartonería y flores.</p>
+                  </div>
+                  <span>Gratis</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Iluminación de fachadas</b>
+                    <p>Calaveras y figuras alusivas al Día de Muertos.</p>
+                  </div>
+                  <span>Gratis</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Festival de cempasúchil en Reforma</b>
+                    <p>Flores y fotografías por Paseo de la Reforma.</p>
+                  </div>
+                  <span>Acceso libre</span>
+                </div>
+
+                <h4 class="cost-header">Presupuesto editable</h4>
+                <p class="cost-hint">Marca las actividades que harán. Cambia importes de transporte, comida y extras; los totales se actualizan cuando se abre en un navegador.</p>
+                
+                <div class="cost-list">
+                  <div class="cost-row fixed-free">
+                    <div class="cost-title">
+                      <strong>Desfile, megaofrenda e iluminación</strong>
+                      <small>Eventos de acceso público</small>
+                    </div>
+                    <strong class="free">Incluido / $0</strong>
+                  </div>
+                  <div class="cost-row" data-cost-row="desfile" data-cost-index="1" data-qty="1">
+                    <div class="cost-title">
+                      <strong>Transporte dos personas</strong>
+                      <small>Estimación, editable</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="desfile|1" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="260" aria-label="Costo unitario: Transporte dos personas" data-price="desfile|1">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="desfile" data-cost-index="2" data-qty="1">
+                    <div class="cost-title">
+                      <strong>Comida y bebidas</strong>
+                      <small>Estimación, editable</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="desfile|2" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="430" aria-label="Costo unitario: Comida y bebidas" data-price="desfile|2">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="desfile" data-cost-index="3" data-qty="2">
+                    <div class="cost-title">
+                      <strong>Maquillaje de catrina (opcional)</strong>
+                      <small>Solo un presupuesto posible · x2</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="desfile|3">
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="180" aria-label="Costo unitario: Maquillaje de catrina (opcional)" data-price="desfile|3">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="note">El desfile está anunciado a las 14:00, de Chapultepec hacia el Zócalo. Habrá multitudes y cierres viales; conviene usar transporte público. Horarios y ruta sujetos a indicaciones finales de la autoridad.</div>
+                <div class="sources">
+                  <b>Fuentes y boletos</b>
+                  <a href="https://www.mexicocity.cdmx.gob.mx/e/dia-de-muertos-en-la-ciudad-de-mexico/" target="_blank" rel="noopener">↗ CDMX · agenda oficial 2026</a>
+                </div>
+              </div>
+            </details>
+            <button type="button" class="favorite js-only" hidden data-favorite="desfile" aria-pressed="false">♡ Agregar a finalistas</button>
+          </div>
+        </article>
+
+        <!-- PLAN 7: MIXQUIC -->
+        <article class="plan" id="plan-mixquic" data-id="mixquic" data-cats="tradicion" data-rank="7" data-name="San Andrés Mixquic · Tradición viva">
+          <div class="plan-art" style="--a:#392946;--b:#654866;--c:#b77a76">
+            <div class="art-glow"></div>
+            <span class="bigemoji">🕯️</span>
+            <span class="art-tag">ÁNIMAS Y CEMPASÚCHIL</span>
+          </div>
+          <div class="plan-inner">
+            <div class="date-line">
+              <span>📍 San Andrés Mixquic, Tláhuac</span>
+              <span>31 OCT ✓</span>
+            </div>
+            <h3>San Andrés Mixquic · Tradición viva</h3>
+            <p class="plan-desc">Visita cultural a un pueblo originario que celebra el Día de Muertos en comunidad.</p>
+            <div class="price-panel">
+              <div>
+                <small>Total para 2 personas</small>
+                <strong data-total="mixquic">$720</strong>
+              </div>
+              <span class="budget-state" data-status="mixquic">Dentro del presupuesto</span>
+            </div>
+            <details class="more" id="details-mixquic">
+              <summary>
+                <span>👻 Ver atracciones, horarios y gastos</span>
+                <span class="down-arrow">⌄</span>
+              </summary>
+              <div class="more-content">
+                <p class="date-flag">🗓️ 31 oct – 2 nov · 31: ánimas infantiles</p>
+                <h4>Atracciones de temporada</h4>
+                <div class="attraction">
+                  <div>
+                    <b>Recepción de las ánimas infantiles</b>
+                    <p>El 31 de octubre se recuerda a los angelitos con ofrendas.</p>
+                  </div>
+                  <span>Acceso libre</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Templo y panteón histórico</b>
+                    <p>Arquitectura, comunidad y tradición religiosa.</p>
+                  </div>
+                  <span>Acceso sujeto a reglas</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Ofrendas y flores</b>
+                    <p>Espacios comunitarios con cempasúchil y alimentos tradicionales.</p>
+                  </div>
+                  <span>Sin boleto general</span>
+                </div>
+                <div class="attraction">
+                  <div>
+                    <b>Comida típica de temporada</b>
+                    <p>Romeritos, calabaza en tacha y antojitos.</p>
+                  </div>
+                  <span>Consumo aparte</span>
+                </div>
+
+                <h4 class="cost-header">Presupuesto editable</h4>
+                <p class="cost-hint">Marca las actividades que harán. Cambia importes de transporte, comida y extras; los totales se actualizan cuando se abre en un navegador.</p>
+                
+                <div class="cost-list">
+                  <div class="cost-row fixed-free">
+                    <div class="cost-title">
+                      <strong>Acceso al pueblo y calles</strong>
+                      <small>Sin boleto general</small>
+                    </div>
+                    <strong class="free">Incluido / $0</strong>
+                  </div>
+                  <div class="cost-row" data-cost-row="mixquic" data-cost-index="1" data-qty="1">
+                    <div class="cost-title">
+                      <strong>Transporte para dos</strong>
+                      <small>Estimación, editable</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="mixquic|1" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="320" aria-label="Costo unitario: Transporte para dos" data-price="mixquic|1">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="mixquic" data-cost-index="2" data-qty="1">
+                    <div class="cost-title">
+                      <strong>Comida y antojos</strong>
+                      <small>Estimación, editable</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="mixquic|2" checked>
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="400" aria-label="Costo unitario: Comida y antojos" data-price="mixquic|2">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="cost-row" data-cost-row="mixquic" data-cost-index="3" data-qty="1">
+                    <div class="cost-title">
+                      <strong>Flores o detalle artesanal</strong>
+                      <small>Opcional</small>
+                    </div>
+                    <div class="edit-cost">
+                      <label class="toggle" title="Incluir en el presupuesto">
+                        <input type="checkbox" data-included="mixquic|3">
+                        <span aria-hidden="true"></span>
+                      </label>
+                      <label class="currency-input">
+                        <span>$</span>
+                        <input inputmode="numeric" type="number" min="0" max="99999" step="1" value="150" aria-label="Costo unitario: Flores o detalle artesanal" data-price="mixquic|3">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="note">El 31 NO ocurre La Alumbrada: la tradicional iluminación masiva del panteón corresponde al 2 de noviembre. Es una celebración comunitaria, no una casa del terror; respetar familias, ofrendas y fotografías.</div>
+                <div class="sources">
+                  <b>Fuentes y boletos</b>
+                  <a href="https://www.mexicocity.cdmx.gob.mx/e/dia-de-muertos-en-la-ciudad-de-mexico/" target="_blank" rel="noopener">↗ CDMX · agenda oficial 2026</a>
+                </div>
+              </div>
+            </details>
+            <button type="button" class="favorite js-only" hidden data-favorite="mixquic" aria-pressed="false">♡ Agregar a finalistas</button>
+          </div>
+        </article>
+
+      </div>
+
+      <p id="emptyPlans" class="empty" hidden>Ningún plan entra en ese filtro. Prueba aumentando el presupuesto o cambiando las atracciones opcionales.</p>
+      <p class="explain">*Los pases de Six Flags cubren la entrada general si están vigentes para esa fecha. Las experiencias especiales del terror se cobran aparte. Las actividades de temporada, accesos y horarios pueden cambiar; revisen las páginas oficiales antes de pagar.</p>
+    </section>
+
+    <!-- COMPARACIÓN DE FINALISTAS -->
+    <section class="comparison js-only" id="comparar" hidden>
+      <span class="eyebrow">Sus favoritas ♡</span>
+      <h2 class="section-title">Las dos finalistas</h2>
+      <p class="section-lead">Toca ♡ en cualquier plan para compararlo con otro, ajustando primero los gastos y extras.</p>
+      <div class="compared" id="comparisonResults"></div>
+    </section>
+
+    <!-- VOTO EN PAREJA -->
+    <section id="votos" class="votebox js-only" hidden>
+      <span class="eyebrow">Decisión en pareja</span>
+      <h2 class="section-title">¿Por cuál votas, Yas? ♡</h2>
+      <p class="section-lead">Elijan de forma independiente y miren si coinciden. Si no, ¡tocará negociar quién invita los esquites! 😂</p>
+      
+      <div class="selects">
+        <label>
+          Voto de Yas
+          <select id="vote-yas">
+            <option value="">— Elegir plan —</option>
+            <option value="six">🎢 Six Flags · Festival del Terror</option>
+            <option value="aztlan">🎡 Aztlán · Festival de las Calaveras</option>
+            <option value="chautla">🏰 Catrineras · Ex Hacienda Chautla</option>
+            <option value="llorona">🌕 La Llorona · Xochimilco</option>
+            <option value="atlixco">🌼 Atlixco · Valle de Catrinas</option>
+            <option value="desfile">💀 Gran Desfile + Megaofrenda</option>
+            <option value="mixquic">🕯️ San Andrés Mixquic · Tradición viva</option>
+          </select>
+        </label>
+        
+        <label>
+          Voto de Ricardo
+          <select id="vote-ricardo">
+            <option value="">— Elegir plan —</option>
+            <option value="six">🎢 Six Flags · Festival del Terror</option>
+            <option value="aztlan">🎡 Aztlán · Festival de las Calaveras</option>
+            <option value="chautla">🏰 Catrineras · Ex Hacienda Chautla</option>
+            <option value="llorona">🌕 La Llorona · Xochimilco</option>
+            <option value="atlixco">🌼 Atlixco · Valle de Catrinas</option>
+            <option value="desfile">💀 Gran Desfile + Megaofrenda</option>
+            <option value="mixquic">🕯️ San Andrés Mixquic · Tradición viva</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="voteResult" class="result" role="status">Hagan su voto ♡</div>
+      
+      <div class="foot-actions">
+        <button class="btn" id="share">↗ Compartir plan</button>
+        <button class="btn secondary" id="copy">📋 Copiar resumen</button>
+        <button class="btn secondary" id="reset">↺ Restablecer</button>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      Hecho para una cita de miedo, flores y mucho amor ♡ · 31 octubre 2026<br>
+      Los importes estimados deben confirmarse antes del viaje.
+    </footer>
+
+  </div>
+
+  <div class="toast" id="toast" hidden role="status"></div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    (function () {
+      'use strict';
+
+      var cards = [].slice.call(document.querySelectorAll('.plan'));
+      var get = function (id) { return document.getElementById(id); };
+      var peso = function (n) { return '$' + Math.round(n || 0).toLocaleString('es-MX'); };
+      
+      var values = {};
+      var finalistas = ['six', 'chautla'];
+      var votos = { yas: '', ricardo: '' };
+      var filter = 'todos';
+      var limit = 1500;
+
+      var storageKey = 'cita-yas-31oct-mobile-v4';
+      var saved = null;
+      
+      try {
+        saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
+      } catch (e) {}
+
+      if (saved && typeof saved === 'object') {
+        values = saved.values || {};
+        finalistas = Array.isArray(saved.finalistas) ? saved.finalistas : ['six', 'chautla'];
+        votos = saved.votos || votos;
+        filter = saved.filter || filter;
+        limit = Math.max(500, Math.min(4000, +saved.limit || 1500));
+      }
+
+      function save() {
+        try {
+          localStorage.setItem(storageKey, JSON.stringify({
+            values: values,
+            finalistas: finalistas,
+            votos: votos,
+            filter: filter,
+            limit: limit
+          }));
+        } catch (e) {}
+      }
+
+      function calculate(card) {
+        var amount = 0;
+        card.querySelectorAll('[data-cost-row]').forEach(function (row) {
+          var inp = row.querySelector('[data-price]');
+          var cb = row.querySelector('[data-included]');
+          var key = inp.getAttribute('data-price');
+          
+          if (values[key]) {
+            inp.value = values[key].price;
+            cb.checked = values[key].on;
+          }
+          if (cb.checked) {
+            amount += (parseFloat(inp.value) || 0) * (parseInt(row.getAttribute('data-qty'), 10) || 1);
+          }
+        });
+        
+        card.setAttribute('data-sum', String(amount));
+        card.querySelector('[data-total]').textContent = peso(amount);
+        
+        var status = card.querySelector('[data-status]');
+        status.textContent = amount <= limit ? '✓ Dentro de presupuesto' : '↗ ' + peso(amount - limit) + ' arriba del tope';
+        status.classList.toggle('over', amount > limit);
+        
+        return amount;
+      }
+
+      function update() {
+        cards.forEach(calculate);
+        applyFilter();
+        drawComparison();
+        drawVotes();
+      }
+
+      function applyFilter() {
+        var count = 0;
+        cards.forEach(function (card) {
+          var price = parseFloat(card.getAttribute('data-sum')) || 0;
+          var cats = card.getAttribute('data-cats').split(' ');
+          var visible = filter === 'todos' || (filter === 'presupuesto' && price <= limit) || cats.indexOf(filter) >= 0;
+          
+          card.hidden = !visible;
+          if (visible) count++;
+        });
+        get('emptyPlans').hidden = count > 0;
+      }
+
+      function drawComparison() {
+        var html = '';
+        finalistas.forEach(function (id) {
+          var c = get('plan-' + id);
+          if (c) {
+            html += '<div class="compared-card"><b>' + c.getAttribute('data-name') + '</b><strong>' + peso(parseFloat(c.getAttribute('data-sum'))) + '</strong><small>para dos personas</small></div>';
+          }
+        });
+        
+        get('comparisonResults').innerHTML = html || '<p>Elijan hasta dos favoritas tocando ♡.</p>';
+        
+        cards.forEach(function (c) {
+          var b = c.querySelector('[data-favorite]');
+          var chosen = finalistas.indexOf(c.getAttribute('data-id')) >= 0;
+          b.setAttribute('aria-pressed', chosen ? 'true' : 'false');
+          b.textContent = chosen ? '♥ Elegida como finalista' : '♡ Agregar a finalistas';
+          c.classList.toggle('favorite-on', chosen);
+        });
+      }
+
+      function drawVotes() {
+        var y = votos.yas;
+        var r = votos.ricardo;
+        var txt = 'Elijan un plan cada uno. ¡A ver si coinciden! 💕';
+        
+        if (y && r) {
+          if (y === r) {
+            txt = '🎉 ¡Coincidieron! ' + get('plan-' + y).getAttribute('data-name') + ' · ' + peso(parseFloat(get('plan-' + y).getAttribute('data-sum'))) + ' para los dos.';
+          } else {
+            txt = '💜 Yas eligió ' + get('plan-' + y).getAttribute('data-name') + ' y Ricardo eligió ' + get('plan-' + r).getAttribute('data-name') + '. ¡Comparen sus finalistas!';
+          }
+        }
+        get('voteResult').textContent = txt;
+      }
+
+      function toast(t) {
+        var el = get('toast');
+        el.textContent = t;
+        el.hidden = false;
+        clearTimeout(window.yasTimeout);
+        window.yasTimeout = setTimeout(function () {
+          el.hidden = true;
+        }, 2600);
+      }
+
+      function resumen() {
+        var out = [
+          '🎃 CITA YAS + RICARDO · 31 DE OCTUBRE DE 2026',
+          'Tope para los dos: ' + peso(limit),
+          ''
+        ];
+        
+        cards.forEach(function (c) {
+          out.push(c.getAttribute('data-name') + ': ' + peso(parseFloat(c.getAttribute('data-sum'))));
+        });
+        
+        out.push(
+          '',
+          'Finalistas: ' + finalistas.map(function (id) { return get('plan-' + id).getAttribute('data-name'); }).join(' / '),
+          'Yas vota: ' + (votos.yas ? get('plan-' + votos.yas).getAttribute('data-name') : 'Pendiente'),
+          'Ricardo vota: ' + (votos.ricardo ? get('plan-' + votos.ricardo).getAttribute('data-name') : 'Pendiente'),
+          '',
+          'Six Flags: acceso general con pases anuales vigentes; casas de terror se pagan aparte.',
+          'Transportes y alimentos son presupuestos estimados. Confirmar condiciones y boletos.'
+        );
+        
+        return out.join('\n');
+      }
+
+      // Inicialización de JavaScript interactivo
+      document.querySelectorAll('.js-only').forEach(function (el) { el.hidden = false; });
+      get('noJS').hidden = true;
+
+      get('limit').value = limit;
+      get('limitValue').textContent = peso(limit);
+      get('limit').addEventListener('input', function () {
+        limit = +this.value;
+        get('limitValue').textContent = peso(limit);
+        update();
+        save();
+      });
+
+      document.querySelectorAll('[data-filter]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          filter = this.getAttribute('data-filter');
+          document.querySelectorAll('[data-filter]').forEach(function (bb) {
+            bb.classList.toggle('active', bb === b);
+            bb.setAttribute('aria-pressed', bb === b ? 'true' : 'false');
+          });
+          update();
+          save();
+        });
+        b.classList.toggle('active', b.getAttribute('data-filter') === filter);
+      });
+
+      get('sort').addEventListener('change', function () {
+        var method = this.value;
+        var order = cards.slice().sort(function (a, b) {
+          if (method === 'precio') return (+a.getAttribute('data-sum')) - (+b.getAttribute('data-sum'));
+          if (method === 'nombre') return a.getAttribute('data-name').localeCompare(b.getAttribute('data-name'), 'es');
+          return (+a.getAttribute('data-rank')) - (+b.getAttribute('data-rank'));
+        });
+        
+        order.forEach(function (c) {
+          get('cards').appendChild(c);
+        });
+        cards = order;
+      });
+
+      cards.forEach(function (card) {
+        card.querySelectorAll('[data-cost-row]').forEach(function (row) {
+          var p = row.querySelector('[data-price]');
+          var ch = row.querySelector('[data-included]');
+          var k = p.getAttribute('data-price');
+          
+          if (values[k]) {
+            p.value = values[k].price;
+            ch.checked = values[k].on;
+          }
+          
+          function change() {
+            values[k] = {
+              price: Math.max(0, Math.min(99999, Number(p.value) || 0)),
+              on: ch.checked
+            };
+            update();
+            save();
+          }
+          
+          p.addEventListener('change', change);
+          ch.addEventListener('change', change);
+        });
+
+        card.querySelector('[data-favorite]').addEventListener('click', function () {
+          var id = card.getAttribute('data-id');
+          var i = finalistas.indexOf(id);
+          
+          if (i >= 0) {
+            finalistas.splice(i, 1);
+          } else {
+            if (finalistas.length === 2) finalistas.shift();
+            finalistas.push(id);
+          }
+          
+          drawComparison();
+          save();
+          toast('Finalistas actualizadas ♡');
+        });
+      });
+
+      ['yas', 'ricardo'].forEach(function (person) {
+        var s = get('vote-' + person);
+        s.value = votos[person] || '';
+        s.addEventListener('change', function () {
+          votos[person] = this.value;
+          drawVotes();
+          save();
+        });
+      });
+
+      get('copy').addEventListener('click', function () {
+        var txt = resumen();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(function () {
+            toast('¡Resumen copiado para Yas! 💌');
+          }).catch(function () {
+            fallbackCopy(txt);
+          });
+        } else {
+          fallbackCopy(txt);
+        }
+      });
+
+      function fallbackCopy(txt) {
+        var area = document.createElement('textarea');
+        area.value = txt;
+        document.body.appendChild(area);
+        area.select();
+        try {
+          document.execCommand('copy');
+          toast('¡Resumen copiado! 💌');
+        } catch (e) {
+          toast('Puedes seleccionar el texto y copiarlo');
+        }
+        area.remove();
+      }
+
+      get('share').addEventListener('click', function () {
+        var txt = resumen();
+        if (navigator.share) {
+          navigator.share({
+            title: 'Nuestra cita de Día de Muertos 🎃',
+            text: txt
+          }).catch(function () {});
+        } else if (navigator.clipboard) {
+          navigator.clipboard.writeText(txt).then(function () {
+            toast('Copiado para compartir ♡');
+          });
+        } else {
+          fallbackCopy(txt);
+        }
+      });
+
+      get('reset').addEventListener('click', function () {
+        if (!confirm('¿Restablecer las selecciones y costos?')) return;
+        try {
+          localStorage.removeItem(storageKey);
+        } catch (e) {}
+        location.reload();
+      });
+
+      update();
+    })();
+  </script>
+</body>
+
+</html>
