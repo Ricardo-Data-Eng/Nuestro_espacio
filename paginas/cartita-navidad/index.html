@@ -1,0 +1,1121 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#082744">
+  <meta name="description"
+        content="Una cartita navideña hecha con amor para mi capibarita.">
+
+  <title>Mi cartita para Santa y los Reyes Magos 🎄❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com"
+        crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    /* =========================================
+       COLORES NAVIDEÑOS — AZUL Y DORADO
+    ========================================= */
+
+    :root {
+      --noche: #061d38;
+      --azul: #103b68;
+      --azul-medio: #246196;
+      --azul-claro: #a9d8f7;
+      --hielo: #d8efff;
+      --dorado: #edc582;
+      --crema: #f8fcff;
+      --papel: #ffffff;
+      --texto: #203b53;
+      --suave: #657f96;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--texto);
+      background: var(--crema);
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* =========================================
+       NIEVE ANIMADA
+    ========================================= */
+
+    .nieve {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .copo {
+      position: absolute;
+      top: -30px;
+      color: white;
+      opacity: .75;
+      animation: nevar linear infinite;
+      text-shadow: 0 0 7px #b5ddff;
+    }
+
+    @keyframes nevar {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
+
+    /* =========================================
+       PORTADA AZUL NAVIDEÑA
+    ========================================= */
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      min-height: 95vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 85px 25px 120px;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          ellipse at 80% 30%,
+          rgba(76, 156, 224, .33),
+          transparent 48%
+        ),
+        radial-gradient(
+          ellipse at 15% 85%,
+          rgba(67, 135, 206, .25),
+          transparent 40%
+        ),
+        linear-gradient(
+          155deg,
+          #05182d 0%,
+          #082b50 45%,
+          #14518b 100%
+        );
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(227, 240, 255, .32);
+      border-radius: 25px;
+      pointer-events: none;
+    }
+
+    /* Colina nevada inferior */
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -96px;
+      left: -10%;
+      width: 120%;
+      height: 155px;
+      background: #f0f9ff;
+      border-radius: 50% 50% 0 0;
+      z-index: -1;
+      box-shadow: 0 -15px 45px rgba(195, 230, 255, .16);
+    }
+
+    .hero-contenido {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      width: 100%;
+    }
+
+    .etiqueta {
+      color: var(--dorado);
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 5px;
+    }
+
+    .estrellas {
+      font-size: 28px;
+      letter-spacing: 12px;
+      color: var(--dorado);
+      margin: 25px 0;
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(42px, 8vw, 88px);
+      font-weight: 500;
+      line-height: 1.15;
+      margin: 25px 0;
+      text-shadow: 0 5px 30px rgba(0, 0, 0, .12);
+    }
+
+    .hero h1 span {
+      color: #c2e9ff;
+      font-style: italic;
+    }
+
+    .hero p {
+      max-width: 550px;
+      margin: 20px auto;
+      color: #e3f2ff;
+      font-size: 17px;
+      line-height: 1.9;
+    }
+
+    .capibara {
+      font-size: 75px;
+      margin: 20px 0;
+      animation: flotar 4s ease-in-out infinite;
+    }
+
+    @keyframes flotar {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .boton-portada {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 49px;
+      padding: 15px 32px;
+      margin-top: 25px;
+      border-radius: 40px;
+      background: var(--dorado);
+      color: #17334e;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform .3s, background .3s;
+    }
+
+    .boton-portada:hover {
+      background: #ffe0a9;
+      transform: translateY(-4px);
+    }
+
+    /* Estrellas decorativas */
+
+    .estrella-fondo {
+      position: absolute;
+      color: #dff6ff;
+      text-shadow: 0 0 15px #b2e8ff;
+      pointer-events: none;
+      opacity: .8;
+    }
+
+    .e1 {
+      top: 20%;
+      left: 8%;
+      font-size: 24px;
+    }
+
+    .e2 {
+      top: 29%;
+      right: 12%;
+      font-size: 18px;
+    }
+
+    .e3 {
+      bottom: 25%;
+      left: 15%;
+      font-size: 15px;
+    }
+
+    .e4 {
+      bottom: 24%;
+      right: 14%;
+      font-size: 26px;
+    }
+
+    /* =========================================
+       CARTA
+    ========================================= */
+
+    .seccion-carta {
+      padding: 90px 20px;
+      background:
+        radial-gradient(
+          circle at 12% 20%,
+          #dceffe,
+          transparent 45%
+        ),
+        #f0f9ff;
+    }
+
+    .carta {
+      position: relative;
+      max-width: 800px;
+      margin: auto;
+      padding: clamp(28px, 6vw, 70px);
+      background: var(--papel);
+      border: 1px solid #c9e0f1;
+      border-radius: 22px;
+      box-shadow: 0 20px 60px rgba(15, 53, 89, .10);
+    }
+
+    .carta::before {
+      content: "✧";
+      position: absolute;
+      top: 24px;
+      right: 30px;
+      color: #d5ab68;
+      font-size: 30px;
+    }
+
+    .carta h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(30px, 5vw, 44px);
+      line-height: 1.3;
+      font-weight: 600;
+      margin-top: 0;
+      color: var(--azul);
+    }
+
+    .decoracion {
+      font-size: 22px;
+      letter-spacing: 8px;
+      color: #d5ab68;
+      margin: 20px 0 34px;
+    }
+
+    .carta p {
+      font-size: 17px;
+      line-height: 2;
+      margin-bottom: 25px;
+    }
+
+    .carta strong {
+      color: #154b78;
+    }
+
+    .firma {
+      font-family: "Playfair Display", serif;
+      color: var(--azul);
+      font-size: 28px;
+      margin-top: 35px;
+    }
+
+    .firma small {
+      display: block;
+      font-family: "DM Sans", sans-serif;
+      font-size: 13px;
+      color: var(--suave);
+      margin-bottom: 8px;
+    }
+
+    /* =========================================
+       SECCIÓN DE REGALOS
+    ========================================= */
+
+    .regalos-seccion {
+      padding: 90px 20px 110px;
+      background: #eaf5fd;
+    }
+
+    .contenedor {
+      max-width: 1170px;
+      margin: auto;
+    }
+
+    .titulo-seccion {
+      text-align: center;
+      max-width: 730px;
+      margin: 0 auto 55px;
+    }
+
+    .titulo-seccion .mini {
+      text-transform: uppercase;
+      color: var(--azul-medio);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    .titulo-seccion h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(36px, 6vw, 57px);
+      color: var(--azul);
+      font-weight: 500;
+      margin: 16px 0;
+    }
+
+    .titulo-seccion p {
+      color: var(--suave);
+      line-height: 1.9;
+      font-size: 17px;
+    }
+
+    /* GRID DE PRODUCTOS */
+
+    .lista-regalos {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .regalo {
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border: 1px solid #cfe4f3;
+      border-radius: 21px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(16, 64, 103, .07);
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .regalo:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(16, 64, 103, .14);
+    }
+
+    .imagen-regalo {
+      height: 260px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(
+        145deg,
+        #f2f9fe,
+        #dcecf7
+      );
+    }
+
+    .regalo:nth-child(3n+2) .imagen-regalo {
+      background: linear-gradient(145deg, #edf5fd, #e1edfa);
+    }
+
+    .regalo:nth-child(3n+3) .imagen-regalo {
+      background: linear-gradient(145deg, #f3f7fa, #e3ebf2);
+    }
+
+    .imagen-regalo img {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 17px;
+      mix-blend-mode: multiply;
+    }
+
+    .imagen-respaldo {
+      position: absolute;
+      z-index: 1;
+      font-size: 85px;
+      opacity: .25;
+    }
+
+    .numero {
+      position: absolute;
+      z-index: 3;
+      top: 14px;
+      left: 14px;
+      padding: 7px 12px;
+      border-radius: 30px;
+      background: #f9fcff;
+      color: var(--azul);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .regalo-contenido {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 25px;
+    }
+
+    .marca {
+      color: var(--azul-medio);
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+
+    .regalo h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+      color: var(--azul);
+      line-height: 1.3;
+      margin: 10px 0;
+    }
+
+    .descripcion {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--suave);
+      margin: 0 0 19px;
+    }
+
+    .talla {
+      align-self: flex-start;
+      padding: 7px 14px;
+      margin-bottom: 23px;
+      background: #edf7ff;
+      border: 1px solid #d2e8f7;
+      border-radius: 30px;
+      color: #1d5989;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .boton-compra {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 49px;
+      padding: 14px;
+      margin-top: auto;
+      background: var(--azul);
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 12px;
+      transition: background .25s;
+    }
+
+    .boton-compra:hover {
+      background: #1e669e;
+    }
+
+    .nota {
+      text-align: center;
+      color: var(--suave);
+      font-size: 13px;
+      line-height: 1.8;
+      max-width: 650px;
+      margin: 38px auto 0;
+    }
+
+    /* =========================================
+       DESPEDIDA
+    ========================================= */
+
+    footer {
+      padding: 85px 20px;
+      text-align: center;
+      background:
+        radial-gradient(
+          circle at top,
+          #164b7a,
+          #061d38 75%
+        );
+      color: white;
+    }
+
+    footer .corazones {
+      font-size: 28px;
+      letter-spacing: 10px;
+      color: var(--dorado);
+    }
+
+    footer h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(28px, 5vw, 43px);
+      font-weight: 500;
+      margin: 25px 0;
+    }
+
+    footer p {
+      max-width: 590px;
+      margin: auto;
+      color: #d4eaff;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .footer-firma {
+      color: var(--dorado);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-top: 32px;
+    }
+
+    /* =========================================
+       RESPONSIVE TABLET
+    ========================================= */
+
+    @media (max-width: 950px) {
+      .lista-regalos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* =========================================
+       RESPONSIVE MÓVIL
+    ========================================= */
+
+    @media (max-width: 650px) {
+      .hero {
+        min-height: 100vh;
+        min-height: 100svh;
+        padding: 70px 22px 115px;
+      }
+
+      .hero h1 {
+        font-size: clamp(34px, 9vw, 51px);
+        line-height: 1.18;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .etiqueta {
+        font-size: 10px;
+        letter-spacing: 3px;
+      }
+
+      .estrellas {
+        font-size: 23px;
+        letter-spacing: 9px;
+      }
+
+      .capibara {
+        font-size: 64px;
+      }
+
+      .hero::before {
+        inset: 10px;
+      }
+
+      .seccion-carta {
+        padding: 55px 16px;
+      }
+
+      .carta {
+        padding: 38px 24px;
+      }
+
+      .carta p {
+        font-size: 15px;
+        line-height: 1.9;
+      }
+
+      .regalos-seccion {
+        padding: 65px 18px;
+      }
+
+      .titulo-seccion p {
+        font-size: 15px;
+      }
+
+      .lista-regalos {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        margin: auto;
+      }
+
+      .imagen-regalo {
+        height: 285px;
+      }
+
+      .boton-compra {
+        min-height: 50px;
+      }
+
+      footer {
+        padding: 68px 24px;
+      }
+
+      footer p {
+        font-size: 15px;
+      }
+
+      .footer-firma {
+        letter-spacing: 1px;
+        line-height: 1.8;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .hero h1 {
+        font-size: 33px;
+      }
+
+      .carta {
+        padding: 35px 19px;
+      }
+    }
+
+    /* =========================================
+       ACCESIBILIDAD
+    ========================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="nieve" id="nieve" aria-hidden="true"></div>
+
+  <!-- =========================================
+       PORTADA
+  ========================================= -->
+
+  <header class="hero">
+
+    <span class="estrella-fondo e1" aria-hidden="true">✦</span>
+    <span class="estrella-fondo e2" aria-hidden="true">✧</span>
+    <span class="estrella-fondo e3" aria-hidden="true">✦</span>
+    <span class="estrella-fondo e4" aria-hidden="true">✧</span>
+
+    <div class="hero-contenido">
+
+      <div class="etiqueta">
+        Una Navidad muy especial
+      </div>
+
+      <div class="estrellas">✧ ✦ ✧</div>
+
+      <h1>
+        Queridos Santa<br>
+        <span>y Reyes Magos</span>
+      </h1>
+
+      <p>
+        Una pequeña cartita, unos cuantos deseos
+        y muchísimo amor para mi capibarita.
+      </p>
+
+      <div class="capibara">🦫🎅❤️</div>
+
+      <p>De tu Capibara, con amor.</p>
+
+      <a href="#carta" class="boton-portada">
+        Abrir mi cartita ↓
+      </a>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =========================================
+         CARTITA
+    ========================================= -->
+
+    <section class="seccion-carta" id="carta">
+
+      <article class="carta">
+
+        <h2>
+          Mi cartita para Santa y los Reyes Magos 🎄✨
+        </h2>
+
+        <div class="decoracion">✧ — ❦ — ✧</div>
+
+        <p>
+          <strong>Queridos Santa Claus y Reyes Magos:</strong>
+        </p>
+
+        <p>
+          Este año creo que me porté bastante bien o bueno,
+          al menos he estado haciendo un gran cambio.
+          JAJAJA. 🤭❤️
+        </p>
+
+        <p>
+          Antes de empezar con mi lista, quiero decir que ya
+          tengo uno de los regalos más bonitos que podría pedir:
+          compartir mis fines de semana y grandes aventuras
+          contigo mi capibarita, reírnos por cualquier tontería,
+          ver películas juntos y seguir creando recuerdos que
+          valen muchísimo más que cualquier cosa material.
+        </p>
+
+        <p>
+          Pero como tampoco hay que dejar a Santa y a los Reyes
+          sin trabajo, preparé esta pequeña lista de deseos. 🎁
+        </p>
+
+        <p>
+          Le puse mucho cariño a esta cartita y hasta le agregué
+          los enlaces para que mis duendes no tengan que andar
+          buscando.
+        </p>
+
+        <p>
+          <strong>
+            Con mucho cariño, su niño que promete portarse
+            todavía mejor el próximo año.
+          </strong>
+          ❤️
+        </p>
+
+        <div class="firma">
+          <small>Att:</small>
+          El Capibara
+        </div>
+
+      </article>
+
+    </section>
+
+    <!-- =========================================
+         LISTA DE REGALOS
+    ========================================= -->
+
+    <section class="regalos-seccion" id="regalos">
+
+      <div class="contenedor">
+
+        <div class="titulo-seccion">
+
+          <div class="mini">
+            Unos cuantos deseos con cariño
+          </div>
+
+          <h2>
+            Mi pequeña lista de deseos 🎁
+          </h2>
+
+          <p>
+            Santa y Reyes Magos: pueden elegir
+            <strong>un regalito cada uno</strong>
+            de esta lista.
+
+            Todo lo demás queda en secreto,
+            porque las mejores sorpresas
+            vienen del corazón. ❤️
+          </p>
+
+        </div>
+
+        <!-- Las tarjetas se crean automáticamente
+             con los productos definidos en JavaScript -->
+
+        <ol class="lista-regalos" id="listaRegalos"></ol>
+
+        <p class="nota">
+          Los precios y la disponibilidad pueden cambiar.
+          Recuerda revisar la talla antes de comprar. ❤️
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =========================================
+       DESPEDIDA
+  ========================================= -->
+
+  <footer>
+
+    <div class="corazones">✧ ♥ ✧</div>
+
+    <h2>
+      Que nunca nos falten aventuras juntos. ❤️
+    </h2>
+
+    <p>
+      Gracias por ser mi capibarita,
+      mi compañera de películas, risas,
+      paseos y de todos los días bonitos
+      que todavía nos esperan.
+    </p>
+
+    <div class="footer-firma">
+      CON AMOR, EL CAPIBARA 🦫
+    </div>
+
+  </footer>
+
+  <script>
+    /* =========================================
+       PRODUCTOS DE LA CARTITA
+
+       Si quieres cambiar las tallas nuevas,
+       modifica el campo "talla" de cada producto.
+    ========================================= */
+
+    const regalos = [
+
+      // REGALO 1
+      {
+        marca: "Liverpool · Tommy Hilfiger",
+        nombre: "Sudadera Tommy Hilfiger",
+        descripcion: "Sudadera para hombre, color negro.",
+        talla: "M",
+        icono: "🧥",
+        imagen:
+          "https://sp261.liverpool.com.mx/i/1197663029.jpg",
+        enlace:
+          "https://www.liverpool.com.mx/tienda/pdp/sudadera-para-hombre/1197661702"
+      },
+
+      // REGALO 2
+      {
+        marca: "Liverpool · HUGO BLUE",
+        nombre: "Sudadera HUGO BLUE",
+        descripcion: "Sudadera para hombre, color negro.",
+        talla: "M",
+        icono: "🧥",
+        imagen:
+          "https://sp245.liverpool.com.mx/i/1190427915.jpg",
+        enlace:
+          "https://www.liverpool.com.mx/tienda/pdp/sudadera-para-hombre/1190427909?skuId=1190427958"
+      },
+
+      // REGALO 3
+      {
+        marca: "Nike",
+        nombre: "Tenis Nike Hybrid RN",
+        descripcion: "Tenis Nike para hombre.",
+        talla: "26 cm",
+        icono: "👟",
+        imagen:
+          "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto%2Cu_9ddf04c7-2a9a-4d76-add1-d15af8f0263d%2Cc_scale%2Cfl_relative%2Cw_1.0%2Ch_1.0%2Cfl_layer_apply/574dc179-017f-47e0-8c59-60f0cdf12e17/M%2BNIKE%2BHYBRID%2BRN.png",
+        enlace:
+          "https://nike.sng.link/Astn5/6tbz/r_478b24ef88"
+      },
+
+      // REGALO 4
+      {
+        marca: "Jordan · Nike",
+        nombre: "Sudadera Jordan Brooklyn",
+        descripcion: "Sudadera Jordan para hombre, color negro.",
+        talla: "M",
+        icono: "🧥",
+        imagen:
+          "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto%2Cu_126ab356-44d8-4a06-89b4-fcdcc8df0245%2Cc_scale%2Cfl_relative%2Cw_1.0%2Ch_1.0%2Cfl_layer_apply/34fdc49a-2c14-48b9-a77a-3c3da6eec103/M%2BJ%2BBRK%2BST%2BFZ%2BBB.png",
+        enlace:
+          "https://nike.sng.link/Astn5/6tbz/r_17cc43fbb9"
+      },
+
+      // REGALO 5
+      {
+        marca: "Adidas · Superstar",
+        nombre: "Tenis Adidas Superstar",
+        descripcion: "Tenis blancos con detalles negros.",
+        talla: "26 cm",
+        icono: "👟",
+        imagen:
+          "https://assets.adidas.com/images/w_600,f_auto,q_auto/5643ea9848e94c1da869fd176bd19128_9366/Tenis_Superstar_Blanco_IH8659_01_standard.jpg",
+        enlace:
+          "https://www.adidas.mx/-/IH8659.html"
+      },
+
+      // REGALO 6 - NUEVO
+      {
+        marca: "Adidas · All Blacks",
+        nombre: "Sudadera All Blacks Leisurewear",
+        descripcion:
+          "Sudadera negra de cierre corto, estilo deportivo.",
+        talla: "M",
+        icono: "🧥",
+        imagen:
+          "https://assets.adidas.com/images/w_600,f_auto,q_auto/2908556deb1f48399ad99d7943132afa_9366/Sudadera_de_Cierre_Corto_All_Blacks_Leisurewear_Negro_KQ8181_21_model.jpg",
+        enlace:
+          "https://www.adidas.mx/-/KQ8181.html"
+      },
+
+      // REGALO 7 - NUEVO
+      {
+        marca: "Adidas · Future Icons",
+        nombre: "Chamarra Future Icons 3 Franjas",
+        descripcion:
+          "Chamarra blanca con gorro y cierre frontal.",
+        talla: "M",
+        icono: "🧥",
+        imagen:
+          "https://assets.adidas.com/images/w_600,f_auto,q_auto/065f23b80d3e47f2ba51399d942b39bf_9366/Chamarra_con_gorro_Future_Icons_3_Franjas_con_cierre_frontal_Blanco_JW7106_21_model.jpg",
+        enlace:
+          "https://www.adidas.mx/-/JW7106.html"
+      },
+
+      // REGALO 8 - NUEVO
+      {
+        marca: "Adidas · PrimeLift",
+        nombre: "Sudadera PrimeLift Workout",
+        descripcion:
+          "Sudadera deportiva azul, corte extragrande.",
+        talla: "M",
+        icono: "🧥",
+        imagen:
+          "https://assets.adidas.com/images/w_600,f_auto,q_auto/864e9c4c03e742fe93efefe35510a4cc_9366/Sudadera_con_Gorro_PrimeLift_Workout_Extragrande_Azul_KE4653_21_model.jpg",
+        enlace:
+          "https://www.adidas.mx/-/KE4653.html"
+      },
+
+      // REGALO 9 - NUEVO
+      {
+        marca: "Adidas · Adicolor",
+        nombre: "Sudadera Adicolor Oversize",
+        descripcion:
+          "Sudadera negra con gorro y cierre frontal.",
+        talla: "M",
+        icono: "🧥",
+        imagen:
+          "https://assets.adidas.com/images/w_600,f_auto,q_auto/c8df176e98e649408bd9735a954b87ac_9366/Sudadera_con_Gorro_adidas_Adicolor_Oversize_Cierre_Frontal_Negro_KQ8919_21_model.jpg",
+        enlace:
+          "https://www.adidas.mx/-/KQ8919.html"
+      }
+
+    ];
+
+    /* =========================================
+       GENERAR TARJETAS DE REGALOS
+    ========================================= */
+
+    const lista = document.getElementById("listaRegalos");
+
+    regalos.forEach((regalo, indice) => {
+
+      const tarjeta = document.createElement("li");
+      tarjeta.className = "regalo";
+
+      const imagenContenedor = document.createElement("div");
+      imagenContenedor.className = "imagen-regalo";
+
+      const numero = document.createElement("span");
+      numero.className = "numero";
+      numero.textContent =
+        "REGALITO " + String(indice + 1).padStart(2, "0");
+
+      const icono = document.createElement("span");
+      icono.className = "imagen-respaldo";
+      icono.textContent = regalo.icono;
+      icono.setAttribute("aria-hidden", "true");
+
+      const imagen = document.createElement("img");
+      imagen.src = regalo.imagen;
+      imagen.alt = regalo.nombre;
+      imagen.loading = "lazy";
+
+      // Si una tienda bloquea la fotografía,
+      // aparece el emoji decorativo de respaldo.
+      imagen.addEventListener("error", () => {
+        imagen.style.display = "none";
+      });
+
+      imagenContenedor.append(numero, icono, imagen);
+
+      const contenido = document.createElement("div");
+      contenido.className = "regalo-contenido";
+
+      const marca = document.createElement("div");
+      marca.className = "marca";
+      marca.textContent = regalo.marca;
+
+      const nombre = document.createElement("h3");
+      nombre.textContent = regalo.nombre;
+
+      const descripcion = document.createElement("p");
+      descripcion.className = "descripcion";
+      descripcion.textContent = regalo.descripcion;
+
+      const talla = document.createElement("span");
+      talla.className = "talla";
+      talla.textContent = "✧ Talla " + regalo.talla;
+
+      const enlace = document.createElement("a");
+      enlace.className = "boton-compra";
+      enlace.href = regalo.enlace;
+      enlace.target = "_blank";
+      enlace.rel = "noopener noreferrer";
+      enlace.textContent = "🎁 Ver regalo en tienda ↗";
+
+      contenido.append(
+        marca,
+        nombre,
+        descripcion,
+        talla,
+        enlace
+      );
+
+      tarjeta.append(imagenContenedor, contenido);
+
+      lista.appendChild(tarjeta);
+    });
+
+    /* =========================================
+       NIEVE ANIMADA
+    ========================================= */
+
+    const reducirMovimiento = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (!reducirMovimiento) {
+
+      const nieve = document.getElementById("nieve");
+
+      const simbolos = ["❄", "✧", "•", "✦"];
+
+      const cantidadCopos =
+        window.innerWidth <= 650 ? 25 : 40;
+
+      for (let i = 0; i < cantidadCopos; i++) {
+
+        const copo = document.createElement("span");
+
+        copo.className = "copo";
+        copo.textContent = simbolos[i % simbolos.length];
+
+        copo.style.left =
+          Math.random() * 100 + "%";
+
+        copo.style.fontSize =
+          (8 + Math.random() * 12) + "px";
+
+        copo.style.animationDuration =
+          (9 + Math.random() * 12) + "s";
+
+        copo.style.animationDelay =
+          (-Math.random() * 20) + "s";
+
+        nieve.appendChild(copo);
+      }
+    }
+  </script>
+
+</body>
+</html>
